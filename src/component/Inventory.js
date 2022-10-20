@@ -59,10 +59,10 @@ function Inventory(){
     }
     
   }
-  useEffect(()=>{
+  // useEffect(()=>{
     
-    console.log('hello sunshine')
-  },[tableData])
+  //   console.log('hello sunshine')
+  // },[tableData])
 
   return (
     <div>
