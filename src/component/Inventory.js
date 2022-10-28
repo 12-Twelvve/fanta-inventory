@@ -57,12 +57,7 @@ function Inventory(){
         .then(response => response.json())
         .then(json => console.log(json));
     }
-    
   }
-  // useEffect(()=>{
-    
-  //   console.log('hello sunshine')
-  // },[tableData])
 
   return (
     <div>

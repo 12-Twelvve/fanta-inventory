@@ -7,7 +7,7 @@ import CashInOut from './component/cashinout/CashInOut'
 import Kot from './component/kot/Kot'
 
 function App() {
-  return (
+  return(
       < BrowserRouter >
          <Navbar />
       <Routes>
