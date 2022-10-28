@@ -12,9 +12,9 @@ function App() {
          <Navbar />
       <Routes>
             <Route exact path="/" element={<Inventory/>} />
-            {/* <Route path="/account" element={<CashInOut/>} />
+            <Route path="/account" element={<CashInOut/>} />
             <Route path="/sells" element={<BuyandSell/>} />
-            <Route path="/kot" element={<Kot/>} /> */}
+            <Route path="/kot" element={<Kot/>} />
             {/* <Route component={ErrorPage} /> */}
          </Routes>
       </BrowserRouter>
