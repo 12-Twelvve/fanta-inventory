@@ -6,12 +6,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
+// import Divider from '@mui/material/Divider';
 
-const dta = [
-    {'itemName': 'momo achar', "qty":"5"},
-    {'itemName': 'piro achar', "qty":"3"},
-]
 
 function ToCook({fetchData}) {
   const [tocookList, setcookList] = useState([])
@@ -20,7 +16,7 @@ function ToCook({fetchData}) {
   
    useEffect(() => {
     //  console.log(fetchData)
-    const li = ['green','yellow','blue']
+    const li = []
     fetchData?.data?.map(parti=>{
       parti.plist.map(item=>{
         if (Number(item.tomorrow_order)<=Number(item.minvalue)){
@@ -52,6 +48,5 @@ function ToCook({fetchData}) {
     </Box>
   )
 }
-// rgba(71, 98, 130, 0.2)---color
-// bgcolor: 'rgba(71, 98, 130, 0.2)'
+
 export default ToCook
