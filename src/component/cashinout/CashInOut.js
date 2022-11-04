@@ -46,6 +46,8 @@ function CashInOut() {
     // handle data
   const handleChange = (event) => {
     setbranch(event.target.value);
+    // post data
+  
   };
   const getSpecificDateData =()=>{
    let brnch = "";
@@ -90,6 +92,7 @@ function CashInOut() {
       </Box>
       {/* daily cash in and out */}
       <CashForm sells={data} branch={branch} date={date}/>
+      {/* specific date */}
       <Box display="flex"
         sx={{m:3,mt:5, gap:1,}} 
         justifyContent="center">

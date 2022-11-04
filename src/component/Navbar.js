@@ -82,11 +82,11 @@ export default function Navbar() {
                 <HomeIcon />
             </IconButton>
             </Link>
-            <Link to="/sells" style={{color: 'orange'}}>
+            {/* <Link to="/sells" style={{color: 'orange'}}>
             <IconButton size="large" aria-label="account" color="inherit">
                 <SellIcon />
             </IconButton>
-            </Link>
+            </Link> */}
             <Link to="/account" style={{color: 'orange'}}>
             <IconButton size="large" aria-label="account" color="inherit">
                 <CurrencyRupeeIcon />
@@ -97,7 +97,7 @@ export default function Navbar() {
                 <SoupKitchenIcon />
             </IconButton>
             </Link>
-            <IconButton
+            {/* <IconButton
               size="large"
               edge="end"
               aria-label="account of current user"
@@ -105,7 +105,7 @@ export default function Navbar() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Toolbar>
       </AppBar>

@@ -6,6 +6,7 @@ import moment from "moment"
 
 
 function CashForm({sells,branch, date}) {
+   
     const [cashIn, setcashIn] = useState(null)
     const [foodmandu, setfoodmandu] = useState(null)
     const [bhojdeals, setBhoojdeals] = useState(null)
@@ -32,6 +33,7 @@ function CashForm({sells,branch, date}) {
       else{
         brnch = "durbarmarg_sells"
       }
+      // console.log(`https://fanta-backend12.herokuapp.com/${brnch}`)
       fetch(`https://fanta-backend12.herokuapp.com/${brnch}`, {
           method: "POST",
           body: JSON.stringify({
@@ -71,6 +73,7 @@ function CashForm({sells,branch, date}) {
     }
     // update data 
     const handleSubmit =()=>{
+        console.log(sells)
         sells.cashIn = cashIn?cashIn:sells.cashIn
         sells.foodmandu.push(foodmandu)
         sells.bhojdeals.push(bhojdeals)

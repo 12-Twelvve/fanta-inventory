@@ -1,4 +1,4 @@
-import React, {useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,27 +8,41 @@ import DatePickr from '../DatePicker';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-
-
-// datacollection
-// data.kot
-const items1 = [
-{title:"jhol momo", quantity:2},
-{title:"dang special", quantity:1},
-{title:"dami special", quantity:2},
-{title:"doaru special", quantity:2},
-{title:"sunflower special", quantity:3},
-{title:"kathmandu special", quantity:2}
-]
-const kot1 = {kotId:'12321235', items:items1}
-const order = [{kot:kot1},{kot:kot1}, {kot:kot1}]
-const data =[order, order, order]
+import moment from "moment"
 
 function Kot() {
     const [branch, setbranch] = useState("durbarmarg");
     const [date, setdate] = useState('')   
-      // fetch data 
-    const fetchKots =()=>{}
+    const [data, setdata] = useState([])
+    // fetch data 
+    const fetchKots =(url)=>{
+      fetch(url)
+      .then(response => response.json())
+        .then(dt => {
+            setdata(dt)
+            // console.log(data)
+        }).catch(err=>{
+          console.log(err)
+        })
+    }
+
+    useEffect(()=>{
+      let brnch = "";
+      if(branch=="kumaripati"){
+        brnch = "kumaripati_order"
+      }
+      else{
+        brnch = "durbarmarg_order"
+      }
+      if (date && moment().format('yyyy-MM-DD') != moment(date).format('yyyy-MM-DD') ){
+        const url = "https://fanta-backend12.herokuapp.com/"+brnch+"?date="+moment(date).format('yyyy-MM-DD');
+        // console.log(date)
+         fetchKots(url);
+      }else{
+        const url = "https://fanta-backend12.herokuapp.com/"+brnch;
+        fetchKots(url);
+      }
+    },[date, branch])
       // handle data
     const handleChange = (event) => {
       setbranch(event.target.value);
@@ -61,7 +75,7 @@ function Kot() {
             flexWrap='wrap'
           sx={{m:3,mt:5, gap:3,}} 
           justifyContent="center">
-        {data.map(o=>o.map(kt =><KotCard kot={kt.kot}/>))}
+        {data.map(o=>o.kot.map(kt =><KotCard kot={kt}/>))}
         </Box>
     </Box>
     )
