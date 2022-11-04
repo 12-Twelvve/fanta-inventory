@@ -12,34 +12,44 @@ function Inventory(){
   const [fetchData, setfetchData] = useState([])
   const [tableData, settableData] = useState([])
   const [todoList, setTodoList] = useState([])
-  // fetch datas 
-  useEffect(() => {
+  
+  const getData =(url) =>{
+    fetch(url)
+     .then((res) => res.json())
+     .then((res) => {
+        // console.log('set')
+       setfetchData(res)
+     })
+  }
+  
+  // fetch today data
+  // useEffect(() => {
+  // }, []);
+ // fetch specific dates data
+ useEffect(() => {
+  // console.log('called--')
+  if (date && moment().format('yyyy-MM-DD') != moment(date).format('yyyy-MM-DD') ){
+    const url = "https://fanta-backend12.herokuapp.com?date="+moment(date).format('yyyy-MM-DD');
+    // console.log(date)
+     getData(url);
+  }else{
     const url = "https://fanta-backend12.herokuapp.com/";
-    const getData =() =>{
-       fetch(url)
-        .then((res) => res.json())
-        .then((res) => {
-          setfetchData(res)
-        })
-    }
-    getData();
-  }, []);
+    getData(url);
+  }
+}, [date]);
+
 // date filter
   useEffect(()=>{
     // console.log(particularOption)
     // console.log(date)
-    if (fetchData.length>0){
-      // console.log(fetchData)
-      let tempData = fetchData.find((li)=>(moment(li.date).format('yy MM DD')==date))
-      if (tempData){
-        settableData(tempData.data)
-        // settableData(tempData)
-      }
-      else{
-        settableData([])
-      }
+    if (fetchData){
+      settableData(fetchData.data)
+      // settableData(tempData)
     }
-  },[date, fetchData])
+    else{
+      settableData([])
+    }
+  },[fetchData])
   // handle update value
   const handleSubmit =()=>{
     // const postData ={date:moment(date).format('yyyy-MM-DD'), data:tableData}
@@ -77,7 +87,7 @@ function Inventory(){
           margin={5}
           >
           {/* toCook list */}
-          <ToCook todoList={todoList}/>
+          <ToCook fetchData={fetchData}/>
         </Box>
     </div>
   )

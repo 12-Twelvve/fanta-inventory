@@ -13,15 +13,23 @@ const dta = [
     {'itemName': 'piro achar', "qty":"3"},
 ]
 
-function ToCook(props) {
-
+function ToCook({fetchData}) {
+  const [tocookList, setcookList] = useState([])
   const getTodoItem =()=>{
-    
   }
   
    useEffect(() => {
-    //  console.log(props.todoList)
-   })
+    //  console.log(fetchData)
+    const li = ['green','yellow','blue']
+    fetchData?.data?.map(parti=>{
+      parti.plist.map(item=>{
+        if (Number(item.tomorrow_order)<=Number(item.minvalue)){
+          li.push(item.pname)
+        }
+      })
+    })
+    setcookList(li)
+   },[fetchData])
    
   return (
     <Box sx={{ width: '70%', bgcolor: '#f1f1f3' }}>
@@ -31,13 +39,13 @@ function ToCook(props) {
           </Typography>
         {/* list */}
         {/* map through each item */}
-        {dta.map(li =>(
-        <ListItem disablePadding>
+        {tocookList?.map((item, index )=>(
+        <ListItem disablePadding key={index}>
             <ListItemButton>
-              <ListItemText align='center' primary={li.itemName} />
-              <ListItemText align='center' primary={li.qty} />
+              <ListItemText align='center' primary={item} />
+              {/* <ListItemText align='center' primary={li.qty} /> */}
             </ListItemButton>
-            <Divider color={'white'} />
+            {/* <Divider color={'white'} /> */}
           </ListItem>))}
         <List>
         </List>

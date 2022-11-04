@@ -287,7 +287,8 @@ export default function DataTable(props) {
     }
   // setRows to rows according to props pass
   useEffect(()=>{
-    let tempData = props.tableData.find((li)=>(li.particulars===props.particularOption))
+    // console.log('called')
+    let tempData = props.tableData?.find((li)=>(li.particulars===props.particularOption))
     if (tempData){
         const rows = tempData.plist;
         setRows(rows)

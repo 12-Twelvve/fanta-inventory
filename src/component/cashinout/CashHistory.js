@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 
 function CashHistory({sells}) {
   return (
-    <Box wirddddd>
+    <Box >
        { Object.entries(sells).map(([k,v]) => {
               return (<Item k={k} value={v}/>)
         })}
