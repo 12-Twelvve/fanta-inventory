@@ -29,10 +29,10 @@ function Kot() {
     useEffect(()=>{
       let brnch = "";
       if(branch=="kumaripati"){
-        brnch = "kumaripati_order"
+        brnch = "kumaripati_kot"
       }
       else{
-        brnch = "durbarmarg_order"
+        brnch = "durbarmarg_kot"
       }
       if (date && moment().format('yyyy-MM-DD') != moment(date).format('yyyy-MM-DD') ){
         const url = "https://fanta-backend12.herokuapp.com/"+brnch+"?date="+moment(date).format('yyyy-MM-DD');
