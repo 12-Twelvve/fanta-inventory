@@ -329,7 +329,7 @@ export default function DataTable(props) {
       <DataGrid
         disableColumnMenu
         rows={rows}
-        autoHeight={true}
+        // autoHeight={true}
         columns={columns}
         loading ={rows.length>0?false:true}
         hideFooter={true}
@@ -343,7 +343,7 @@ export default function DataTable(props) {
               textOverflow: "clip",
               overflow:'hidden',
               whiteSpace: "break-spaces",
-              // lineHeight: 20
+              // lineHeight: 10
           }
       }}
         // onCellClick= {cellClickHandler}
