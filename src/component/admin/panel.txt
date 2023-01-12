@@ -1,0 +1,26 @@
+menu >>
+    # add food >  
+            food  = name, family, price
+            food recipe = ingredient...[] #list from store
+    # delete food >
+            food id , food ingredient id
+    # update food >
+            food id, name, family , price .
+            food recipe = ingredient []
+
+store item >>
+    store item , family, branch , 
+     add, delete, rename(update) ,  quantity measurement unit
+admin user >>
+    name, email, password
+     add , delete
+
+online partners>>>
+    durbarmarg sells >>
+    kumaripati sells >>
+        sells  add, delete:
+            pepse, coca, foodmandu , ...online partner ship
+----------------------
+branches >>
+    add , delete
+
